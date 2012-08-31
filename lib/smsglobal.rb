@@ -26,6 +26,7 @@ module SmsGlobal
         params[:scheduledatetime] = send_at.strftime('%Y-%m-%d %h:%M:%S')
       end
       params[:maxsplit] = @options[:maxsplit] if @options[:maxsplit]
+      params[:userfield] = @options[:userfield] if @options[:userfield]
 
       resp = get(params)
 
