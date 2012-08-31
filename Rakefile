@@ -8,7 +8,7 @@ begin
     gem.summary = %Q{Ruby interface for SMSGlobal}
     gem.description = %Q{Ruby gem to send and receive SMS messages via SMSGlobal.}
     gem.email = "alex@kuperov.com"
-    gem.homepage = "http://github.com/kuperov/smsglobal"
+    gem.homepage = "http://github.com/devdav/smsglobal"
     gem.authors = ["Alex Cooper"]
     gem.add_development_dependency "rspec", ">= 2.0.0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
