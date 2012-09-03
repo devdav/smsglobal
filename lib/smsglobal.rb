@@ -28,6 +28,7 @@ module SmsGlobal
       end
       params[:maxsplit] = @options[:maxsplit] if @options[:maxsplit]
       params[:userfield] = @options[:userfield] if @options[:userfield]
+      params[:api] = @options[:api] if @options[:api]
 
       resp = get(params)
 
