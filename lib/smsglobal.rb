@@ -1,4 +1,5 @@
 require 'net/http'
+require "net/https"
 require "openssl"
 require 'uri'
 
@@ -66,9 +67,7 @@ module SmsGlobal
       if params
         url.query = params.map { |k,v| "%s=%s" % [URI.encode(k.to_s), URI.encode(v)] }.join("&")
       end
-      res = HTTP.start(url.host, url.port) do |http|
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      res = HTTP.start(url.host, url.port, :use_ssl => true, :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
         http.get(url.request_uri)
       end
     end
