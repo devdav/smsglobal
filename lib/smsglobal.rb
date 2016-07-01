@@ -1,4 +1,5 @@
 require 'net/http'
+require "openssl"
 require 'uri'
 
 module SmsGlobal
@@ -10,7 +11,7 @@ module SmsGlobal
       raise 'missing :user' unless @options[:user]
       raise 'missing :password' unless @options[:password]
       @options.each {|k,v| @options[k] = v.to_s if v.present? }
-      @base = @options[:base] || 'http://www.smsglobal.com/'
+      @base = @options[:base] || 'https://www.smsglobal.com/'
     end
 
     def send_text(text, to, sender = nil, send_at = nil)
@@ -66,6 +67,8 @@ module SmsGlobal
         url.query = params.map { |k,v| "%s=%s" % [URI.encode(k.to_s), URI.encode(v)] }.join("&")
       end
       res = HTTP.start(url.host, url.port) do |http|
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         http.get(url.request_uri)
       end
     end
