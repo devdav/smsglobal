@@ -12,7 +12,7 @@ module SmsGlobal
       raise 'missing :user' unless @options[:user]
       raise 'missing :password' unless @options[:password]
       @options.each {|k,v| @options[k] = v.to_s if v.present? }
-      @base = @options[:base] || 'https://www.smsglobal.com/'
+      @base = @options[:base] || 'https://api.smsglobal.com/'
     end
 
     def send_text(text, to, sender = nil, send_at = nil)
